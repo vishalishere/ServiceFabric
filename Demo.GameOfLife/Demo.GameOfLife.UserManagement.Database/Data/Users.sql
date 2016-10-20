@@ -1,0 +1,1 @@
+﻿insert into Users ([DisplayName], [Username], [Password]) values ('John Doe', 'jdoe', 'CBFDAC6008F9CAB4083784CBD1874F76618D2A97'); -- jdoe/password123
