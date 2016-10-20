@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Threading.Tasks;
 
 namespace Demo.GameOfLife.UserManagement.DAL
@@ -17,6 +18,12 @@ namespace Demo.GameOfLife.UserManagement.DAL
         public async Task<User> GetBy(string username, string passwordHash)
         {
             return await _context.Users.FirstOrDefaultAsync(x => x.Username.ToLower() == username.ToLower() && x.Password.ToLower() == passwordHash.ToLower());
+        }
+
+        public async Task Add(User user)
+        {
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
         }
     }
 }

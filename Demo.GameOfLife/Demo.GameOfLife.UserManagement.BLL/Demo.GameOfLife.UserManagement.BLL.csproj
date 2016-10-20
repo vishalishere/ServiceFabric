@@ -42,7 +42,15 @@
   <ItemGroup>
     <Compile Include="Helpers\HashHelper.cs" />
     <Compile Include="Helpers\IHashHelper.cs" />
+    <Compile Include="IUserManagement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserManagement.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.GameOfLife.UserManagement.DAL\Demo.GameOfLife.UserManagement.DAL.csproj">
+      <Project>{1D0C6E6F-BA57-4195-A841-BFE0A637A53F}</Project>
+      <Name>Demo.GameOfLife.UserManagement.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
