@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.GameOfLife.Contracts",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{21C8FEF5-ED2F-41C8-8DA2-0AAE5DE0829F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.GameOfLife.WebApp", "Demo.GameOfLife.WebApp\Demo.GameOfLife.WebApp.csproj", "{9A822ADE-C24F-4FDD-A9EA-4CEC8F2F105E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,14 @@ Global
 		{3FFBA589-4390-4670-A1FD-255AB90CA56C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3FFBA589-4390-4670-A1FD-255AB90CA56C}.Release|x64.ActiveCfg = Release|Any CPU
 		{3FFBA589-4390-4670-A1FD-255AB90CA56C}.Release|x64.Build.0 = Release|Any CPU
+		{9A822ADE-C24F-4FDD-A9EA-4CEC8F2F105E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A822ADE-C24F-4FDD-A9EA-4CEC8F2F105E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A822ADE-C24F-4FDD-A9EA-4CEC8F2F105E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9A822ADE-C24F-4FDD-A9EA-4CEC8F2F105E}.Debug|x64.Build.0 = Debug|Any CPU
+		{9A822ADE-C24F-4FDD-A9EA-4CEC8F2F105E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A822ADE-C24F-4FDD-A9EA-4CEC8F2F105E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A822ADE-C24F-4FDD-A9EA-4CEC8F2F105E}.Release|x64.ActiveCfg = Release|Any CPU
+		{9A822ADE-C24F-4FDD-A9EA-4CEC8F2F105E}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
