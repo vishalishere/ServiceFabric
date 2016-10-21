@@ -1,29 +1,26 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
 
 namespace Demo.GameOfLife.UserManagement.DAL
 {
-    public class UserDAL: IUserDAL
+    public class UserDal : BaseDal, IUserDAL
     {
-        private IUserManagementConnection _context;
-
-        public UserDAL(IUserManagementConnection context)
-        {
-            _context = context;
-        }
-
-        public UserDAL() : this(new UserManagementConnection()) { }
-
         public async Task<User> GetBy(string username, string passwordHash)
         {
-            return await _context.Users.FirstOrDefaultAsync(x => x.Username.ToLower() == username.ToLower() && x.Password.ToLower() == passwordHash.ToLower());
+            using (var context = Context())
+            {
+                var user = await context.Users.FirstOrDefaultAsync(x => x.Username.ToLower() == username.ToLower() && x.Password.ToLower() == passwordHash.ToLower());
+                return user;
+            }
         }
 
         public async Task Add(User user)
         {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            using (var context = Context())
+            {
+                context.Users.Add(user);
+                await context.SaveChangesAsync();
+            }
         }
     }
 }

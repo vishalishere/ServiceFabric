@@ -1,9 +1,10 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Threading.Tasks;
 
 namespace Demo.GameOfLife.UserManagement.DAL
 {
-    public interface IUserManagementConnection
+    public interface IUserManagementConnection: IDisposable
     {
         DbSet<User> Users { get; set; }
 

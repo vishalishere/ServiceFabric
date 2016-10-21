@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Web.Http;
 using Demo.GameOfLife.UserManagement.BLL.Helpers;
 using Demo.GameOfLife.UserManagement.DAL;
 
@@ -16,11 +17,12 @@ namespace Demo.GameOfLife.UserManagement.BLL
             _userDal = userDal;
             _hashHelper = hashHelper;
         }
-        public UserManagement(): this(new UserDAL(), new HashHelper())
+        public UserManagement(): this(new UserDal(), new HashHelper())
         {
 
         }
 
+        [HttpGet]
         public async Task AddUser(string displayName, string username, string password)
         {
             var passwordHash = _hashHelper.GetHashString(password);
@@ -32,6 +34,7 @@ namespace Demo.GameOfLife.UserManagement.BLL
             });
         }
 
+        [HttpGet]
         public async Task<bool> IsUserPasswordValid(string username, string password)
         {
             var passwordHash = _hashHelper.GetHashString(password);

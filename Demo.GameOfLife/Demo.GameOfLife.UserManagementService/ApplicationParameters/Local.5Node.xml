@@ -2,5 +2,6 @@
 <Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/Demo.GameOfLife.UserManagementService" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="UserManagement_InstanceCount" Value="1" />
+    <Parameter Name="DatabaseConnectionString" Value="metadata=res://*/UserManagementContext.csdl|res://*/UserManagementContext.ssdl|res://*/UserManagementContext.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=sqlexpress;initial catalog=Demo.GameOfLife.UserManagement;user id=me;password=password123;MultipleActiveResultSets=True;App=EntityFramework&quot;" />
   </Parameters>
 </Application>

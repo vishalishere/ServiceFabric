@@ -1,5 +1,4 @@
 ﻿using Demo.GameOfLife.UserManagement.BLL;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -8,7 +7,7 @@ namespace Demo.GameOfLife.UserManagement.Controllers
     [ServiceRequestActionFilter]
     public class AuthenticationController : ApiController
     {
-        private IUserManagement _userManagement;
+        private readonly IUserManagement _userManagement;
 
         public AuthenticationController(IUserManagement userManagement)
         {
@@ -20,9 +19,11 @@ namespace Demo.GameOfLife.UserManagement.Controllers
 
         }
 
-        public async Task<bool> IsValid(string username, string password)
+        [HttpGet]
+        public async Task<IHttpActionResult> IsValid(string username, string password)
         {
-            return await _userManagement.IsUserPasswordValid(username, password);
+            var result = await _userManagement.IsUserPasswordValid(username, password);
+            return Ok(result);
         }
     }
 }

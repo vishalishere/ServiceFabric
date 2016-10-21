@@ -8,7 +8,7 @@ namespace Demo.GameOfLife.UserManagement.Controllers
     [ServiceRequestActionFilter]
     public class UserManagementController : ApiController
     {
-        private IUserManagement _userManagement;
+        private readonly IUserManagement _userManagement;
 
         public UserManagementController(IUserManagement userManagement) 
         {
@@ -21,6 +21,7 @@ namespace Demo.GameOfLife.UserManagement.Controllers
         }
 
         // POST api/values 
+        [HttpPost]
         public async Task Post([FromBody]User user)
         {
             await _userManagement.AddUser(user.DisplayName, user.Username, user.Password);
