@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Diagnostics.Eventing.Reader;
-using System.Fabric;
 using Demo.GameOfLife.UserManagement.BLL;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Demo.GameOfLife.Contracts;
-using Microsoft.ServiceFabric.Services.Client;
-using Microsoft.ServiceFabric.Services.Remoting.Client;
 
 namespace Demo.GameOfLife.UserManagement.Controllers
 {
     [ServiceRequestActionFilter]
-    public class AuthenticationController : ApiController
+    public class AuthenticationController : AuthenticationServiceBaseController
     {
-        //todo: move const to config
-        private const string DemoGameofLifeUserAuthenticationServiceAddress = "fabric:/Demo.GameOfLife.UserAuthenticationService/UserAuthentication";
         private readonly IUserManagement _userManagement;
 
         public AuthenticationController(IUserManagement userManagement)
@@ -36,11 +29,6 @@ namespace Demo.GameOfLife.UserManagement.Controllers
 
             var token = await GetAuthServiceInstance().AddUserSession(username);
             return Ok(token.ToString());
-        }
-
-        private static IUserAuthentication GetAuthServiceInstance()
-        {
-            return ServiceProxy.Create<IUserAuthentication>(new Uri(DemoGameofLifeUserAuthenticationServiceAddress), new ServicePartitionKey(1));
         }
 
         [HttpGet]
