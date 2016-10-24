@@ -12,7 +12,7 @@ namespace Demo.GameOfLife.Engine.BL
 
         public Task ComputeGeneration(GameBoard board)
         {
-            throw new System.NotImplementedException();
+            return Task.FromResult(1);
         }
     }
     
