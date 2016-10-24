@@ -6,6 +6,7 @@ using Demo.GameOfLife.Contracts;
 using Demo.GameOfLife.Engine.Model;
 using Microsoft.ServiceFabric.Services.Client;
 using Microsoft.ServiceFabric.Services.Remoting.Client;
+using Newtonsoft.Json;
 
 namespace Demo.GameOfLife.Engine.Api.Controllers
 {
@@ -23,9 +24,9 @@ namespace Demo.GameOfLife.Engine.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IHttpActionResult> ComputeBoardFor([FromBody]GameBoard board, Guid sessionToken)
+        public async Task<IHttpActionResult> ComputeBoardFor([FromBody]GameBoard board)
         {
-            await GameEngineInstance.ComputeBoardFor(board, sessionToken);
+            await GameEngineInstance.ComputeBoardFor(board, board.Token);
             return Ok();
         }
 
