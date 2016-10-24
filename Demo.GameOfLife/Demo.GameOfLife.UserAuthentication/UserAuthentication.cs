@@ -68,6 +68,17 @@ namespace Demo.GameOfLife.UserAuthentication
 
             using (var tx = StateManager.CreateTransaction())
             {
+                var session = await sessionDictionary.TryGetValueAsync(tx, username);
+                if (session.HasValue)
+                {
+                    session.Value.RenewExpireTime();
+                    await sessionDictionary.SetAsync(tx, username, session.Value);
+                    await tx.CommitAsync();
+
+                    ServiceEventSource.Current.ServiceMessage(Context, "User {0} allready present with session id: {1}",
+                    username, session.Value.UserToken);
+                }
+
                 var userSession = new UserSession(username);
                 await sessionDictionary.AddAsync(tx, username, userSession);
                 await tx.CommitAsync();

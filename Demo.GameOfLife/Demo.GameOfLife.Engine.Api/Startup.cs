@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
 using Owin;
 
-namespace Demo.GameOfLife.UserManagement
+namespace Demo.GameOfLife.Engine.Api
 {
     public static class Startup
     {
