@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Demo.GameOfLife.Contracts;
 using Demo.GameOfLife.Engine.Model;
 using Microsoft.ServiceFabric.Services.Client;
 using Microsoft.ServiceFabric.Services.Remoting.Client;
-using Newtonsoft.Json;
 
 namespace Demo.GameOfLife.Engine.Api.Controllers
 {
