@@ -24,38 +24,43 @@ namespace Demo.GameOfLife.Engine.BL
         {
             foreach (var boardCell in board)
             {
-                var aliveCellCount = 0;
-                BoardCell cell = null;
-                if ((cell = GetNorthWestNeighbour(board, boardCell)) != null && cell.IsAlive)
-                    aliveCellCount++;
-
-                if ((cell = GetNorthNeighbour(board, boardCell)) != null && cell.IsAlive)
-                    aliveCellCount++;
-
-                if ((cell = GetNorthEastNeighbour(board, boardCell)) != null && cell.IsAlive)
-                    aliveCellCount++;
-
-                if ((cell = GetWestNeighbour(board, boardCell)) != null && cell.IsAlive)
-                    aliveCellCount++;
-
-                if ((cell = GetEastNeighbour(board, boardCell)) != null && cell.IsAlive)
-                    aliveCellCount++;
-
-                if ((cell = GetSouthWestNeighbour(board, boardCell)) != null && cell.IsAlive)
-                    aliveCellCount++;
-
-                if ((cell = GetSouthNeighbour(board, boardCell)) != null && cell.IsAlive)
-                    aliveCellCount++;
-
-                if ((cell = GetSouthEastNeighbour(board, boardCell)) != null && cell.IsAlive)
-                    aliveCellCount++;
-
+                var aliveCellCount = CalculateNumberOfLivingNeighbours(board, boardCell);
 
                 ApplyRuleWhenLessThanTwoLiveNeighboursReturnDead(boardCell, aliveCellCount);
                 ApplyRuleWhenMoreThanThreeLiveNeighboursReturnsDead(boardCell, aliveCellCount);
                 ApplyRuleWhenTwoOrThreeLiveNeighboursAndCellLiveReturnsAlive(boardCell, aliveCellCount);
                 ApplyRuleWhenThreeLiveNeighboursAndCellDeadRturnsAlive(boardCell, aliveCellCount);
             }
+        }
+
+        private static int CalculateNumberOfLivingNeighbours(IEnumerable<BoardCell> board, BoardCell boardCell)
+        {
+            BoardCell cell;
+            var aliveCellCount = 0;
+            if ((cell = GetNorthWestNeighbour(board, boardCell)) != null && cell.IsAlive)
+                aliveCellCount++;
+
+            if ((cell = GetNorthNeighbour(board, boardCell)) != null && cell.IsAlive)
+                aliveCellCount++;
+
+            if ((cell = GetNorthEastNeighbour(board, boardCell)) != null && cell.IsAlive)
+                aliveCellCount++;
+
+            if ((cell = GetWestNeighbour(board, boardCell)) != null && cell.IsAlive)
+                aliveCellCount++;
+
+            if ((cell = GetEastNeighbour(board, boardCell)) != null && cell.IsAlive)
+                aliveCellCount++;
+
+            if ((cell = GetSouthWestNeighbour(board, boardCell)) != null && cell.IsAlive)
+                aliveCellCount++;
+
+            if ((cell = GetSouthNeighbour(board, boardCell)) != null && cell.IsAlive)
+                aliveCellCount++;
+
+            if ((cell = GetSouthEastNeighbour(board, boardCell)) != null && cell.IsAlive)
+                aliveCellCount++;
+            return aliveCellCount;
         }
 
         private static void ApplyRuleWhenLessThanTwoLiveNeighboursReturnDead(BoardCell boardCell, int aliveCellCount)
