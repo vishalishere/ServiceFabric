@@ -21,7 +21,23 @@ namespace Demo.GameOfLife.Tests
         [TestMethod]
         public async Task IsComputationFinished_WhenRulesAreValid_ReturnsFalse()
         {
-            GameBoard someBoard = null;
+            var someBoard = new GameBoard
+            {
+                Board = new List<BoardCell>
+                {
+                    new BoardCell(0, 0, false),
+                    new BoardCell(1, 0, true),
+                    new BoardCell(2, 0, false),
+
+                    new BoardCell(0, 1, false),
+                    new BoardCell(1, 1, true),
+                    new BoardCell(2, 1, false),
+
+                    new BoardCell(0, 2, false),
+                    new BoardCell(1, 2, false),
+                    new BoardCell(2, 2, false),
+                }
+            };
 
             var result = await _sut.IsComputationFinished(someBoard);
 

@@ -7,17 +7,18 @@ namespace Demo.GameOfLife.Engine.BL
 {
     public class BoardComputer
     {
-        public Task<bool> IsComputationFinished(GameBoard board)
+        public async Task<bool> IsComputationFinished(GameBoard input)
         {
-            return Task.FromResult(false);
+            var initialLiveCells = input.Board.Count(x => x.IsAlive);
+            await ComputeGeneration(input);
+            var nextGenerationLiveCells = input.Board.Count(x => x.IsAlive);
+
+            return initialLiveCells == nextGenerationLiveCells;
         }
 
-        public Task ComputeGeneration(GameBoard board)
+        public async Task ComputeGeneration(GameBoard input)
         {
-            ApplyGameRules(board.Board);
-
-            //TODO parallelize computation
-            return Task.FromResult(1);
+            await Task.Run(() => ApplyGameRules(input.Board));
         }
 
         public void ApplyGameRules(IEnumerable<BoardCell> board)
@@ -60,6 +61,7 @@ namespace Demo.GameOfLife.Engine.BL
 
             if ((cell = GetSouthEastNeighbour(board, boardCell)) != null && cell.IsAlive)
                 aliveCellCount++;
+
             return aliveCellCount;
         }
 
